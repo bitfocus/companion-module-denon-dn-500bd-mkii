@@ -35,8 +35,7 @@ instance.prototype.updateConfig = function(config) {
 	}
 
 	self.config = config;
-    self.init_tcp();
-
+  self.init_tcp();
 };
 
 instance.prototype.init = function() {
@@ -45,8 +44,7 @@ instance.prototype.init = function() {
 	debug = self.debug;
 	log = self.log;
 	self.init_presets();
-    self.init_tcp();
-
+	self.init_tcp();
 };
 
 instance.prototype.init_tcp = function() {
@@ -87,14 +85,7 @@ instance.prototype.config_fields = function () {
 	var self = this;
 
 	return [
-/*		{
-			type: 'text',
-			id: 'info',
-			label: 'Information',
-			width: 12,
-			value: 'Please keep in mind that UDP support on port 9000 is not implemented yet in the Coyote firmware.'
-		},
-*/		{
+		{
 			type: 'textinput',
 			id: 'host',
 			label: 'Target IP',
@@ -123,32 +114,6 @@ instance.prototype.destroy = function() {
 	debug("destroy", self.id);
 };
 
-/*
-instance.prototype.CHOICES_COMMANDS = [
-	{ id: 'play', 					label: 'Play', 					value: '0'},
-	{ id: 'pause', 					label: 'Pause', 				value: '0'},
-	{ id: 'end', 						label: 'End', 					value: '0'},
-	{ id: 'take_next', 			label: 'Take Next'},
-	{ id: 'take_prev', 			label: 'Take Prev'},
-	{ id: 'select_next', 		label: 'Select Next'},
-	{ id: 'select_prev', 		label: 'Select Prev'},
-	{ id: 'select_preset',	label: 'Select Preset', value: '0'},
-];
-
-instance.prototype.CHOICES_SEEK_TO = [
-	{ id: 'seek_to', label: 'Seek to 1 sec',	value: '0', time: '1000'},
-	{ id: 'seek_to', label: 'Seek to 5 sec', 	value: '0', time: '5000'},
-	{ id: 'seek_to', label: 'Seek to 10 sec', value: '0', time: '10000'},
-	{ id: 'seek_to', label: 'Seek to 30 sec', value: '0', time: '30000'},
-];
-
-instance.prototype.CHOICES_SYSTEM = [
-	{ id: 'reboot', 			label: 'Reboot' },
-	{ id: 'soft_reboot', 	label: 'Soft Reboot' },
-	{ id: 'shutdown', 		label: 'Shutdown' },
-];
-*/
-
 instance.prototype.CHOICES_POWER = [
 	{ id: 'PW00', 	    label: 'Power On' },
 	{ id: 'PW01', 	    label: 'Power Off' }
@@ -164,7 +129,7 @@ instance.prototype.CHOICES_TRACK_PLAYBACK = [
 	{ id: '2348', 	    label: 'Pause' },
 	{ id: '2354', 	    label: 'Stop' },
 	{ id: 'mt00', 	    label: 'Turn Myte On' },
-	{ id: 'mt01',   	label: 'Turn Myte Off' },
+	{ id: 'mt01',   		label: 'Turn Myte Off' },
 ];
 
 instance.prototype.CHOICES_TRACK_SELECTION = [
@@ -180,25 +145,25 @@ instance.prototype.CHOICES_TITLE_SELECTION = [
 ];
 
 instance.prototype.CHOICES_TRACK_SEARCHING = [
-	{ id: 'PCSLSR', 	label: 'Rewind' },
-	{ id: 'PCGPPV', 	label: 'Fast Forward' },
+	{ id: 'PCSLSR', 		label: 'Rewind' },
+	{ id: 'PCGPPV', 		label: 'Fast Forward' },
 ];
 
 instance.prototype.CHOICES_IR_LOCK = [
-	{ id: 'PCIRLK00',	label: 'IR Lock' },
-	{ id: 'PCIRLK01',	label: 'IR Unlock' },
+	{ id: 'PCIRLK00',		label: 'IR Lock' },
+	{ id: 'PCIRLK01',		label: 'IR Unlock' },
 ];
 
 instance.prototype.CHOICES_PANEL_LOCK = [
-	{ id: '23KL',   	label: 'Panel Lock' },
-	{ id: '23KU',   	label: 'Panel Unlock' },
+	{ id: '23KL',   		label: 'Panel Lock' },
+	{ id: '23KU',   		label: 'Panel Unlock' },
 ];
 
 instance.prototype.CHOICES_TIME_DISPLAY = [
-	{ id: 'PCTMDEL',	label: 'Display Track Elapsed' },
-	{ id: 'PCTMDRM',	label: 'Display Track Remaining' },
-	{ id: 'PCTMDTL',	label: 'Display Total Elapsed' },
-	{ id: 'PCTMDTR',	label: 'Display Total Remaining' },
+	{ id: 'PCTMDEL',		label: 'Display Track Elapsed' },
+	{ id: 'PCTMDRM',		label: 'Display Track Remaining' },
+	{ id: 'PCTMDTL',		label: 'Display Total Elapsed' },
+	{ id: 'PCTMDTR',		label: 'Display Total Remaining' },
 ];
 
 instance.prototype.CHOICES_REPEAT = [
@@ -213,28 +178,28 @@ instance.prototype.CHOICES_PROGRAM_MODE = [
 ];
 
 instance.prototype.CHOICES_RANDOM_MODE_TYPE = [
-	{ id: 'S',   	label: 'Shuffle' },
-	{ id: 'R',   	label: 'Random' },
+	{ id: 'S',   				label: 'Shuffle' },
+	{ id: 'R',   				label: 'Random' },
 ];
 
 instance.prototype.CHOICES_RANDOM_MODE_MODE = [
-	{ id: 'OF',   	label: 'Off' },
-	{ id: 'SI',   	label: 'Sub Item' },
-	{ id: 'IT',   	label: 'Item' },
-	{ id: 'AL',   	label: 'All' },
+	{ id: 'OF',   			label: 'Off' },
+	{ id: 'SI',   			label: 'Sub Item' },
+	{ id: 'IT',   			label: 'Item' },
+	{ id: 'AL',   			label: 'All' },
 ];
 
 instance.prototype.CHOICES_HIDE_OSD = [
-	{ id: 'DVHOSD00',   	label: 'Hido OSD' },
-	{ id: 'DVHOSD01',   	label: 'Show OSD' },
+	{ id: 'DVHOSD00',   label: 'Hido OSD' },
+	{ id: 'DVHOSD01',   label: 'Show OSD' },
 ];
 
 instance.prototype.CHOICES_DVD_MENU = [
-	{ id: 'PCSU',   	label: 'Setup Menu' },
-	{ id: 'DVTP',   	label: 'Top Menu' },
-	{ id: 'DVPO',   	label: 'Option Menu' },
-	{ id: 'DVPU',   	label: 'Pop Up Menu' },
-	{ id: 'PCRTN',   	label: 'Return' },
+	{ id: 'PCSU',   		label: 'Setup Menu' },
+	{ id: 'DVTP',   		label: 'Top Menu' },
+	{ id: 'DVPO',   		label: 'Option Menu' },
+	{ id: 'DVPU',   		label: 'Pop Up Menu' },
+	{ id: 'PCRTN',   		label: 'Return' },
 ];
 
 instance.prototype.CHOICES_AUDIO_DIALOG = [
@@ -250,12 +215,12 @@ instance.prototype.CHOICES_CURSOR = [
 ];
 
 instance.prototype.CHOICES_VIDEO_RESOLUTION = [
-	{ id: 'DVVR1',   	label: 'Auto' },
-	{ id: 'DVVR2',   	label: '480/560i' },
-	{ id: 'DVVR3',   	label: '480/560p' },
-	{ id: 'DVVR4',   	label: '720p' },
-	{ id: 'DVVR5',   	label: '1080i' },
-	{ id: 'DVVR6',   	label: '1080p' },
+	{ id: 'DVVR1',   		label: 'Auto' },
+	{ id: 'DVVR2',   		label: '480/560i' },
+	{ id: 'DVVR3',   		label: '480/560p' },
+	{ id: 'DVVR4',   		label: '720p' },
+	{ id: 'DVVR5',   		label: '1080i' },
+	{ id: 'DVVR6',   		label: '1080p' },
 ];
 
 instance.prototype.CHOICES_FUNCTIONS_COLOR = [
@@ -266,7 +231,7 @@ instance.prototype.CHOICES_FUNCTIONS_COLOR = [
 ];
 
 instance.prototype.CHOICES_SEARCH_SPEED = [
-	{ id: 'f',       	label: 'Fast Speed' },
+	{ id: 'f',       		label: 'Fast Speed' },
 	{ id: 's',     	    label: 'Slow Speed' },
 ];
 
@@ -284,7 +249,7 @@ instance.prototype.init_presets = function () {
 	var self = this;
 	var presets = [];
 	var pstSize = '18';
-
+/*
 	for (var input in self.CHOICES_COMMANDS) {
 		presets.push({
 			category: 'Commands',
@@ -342,7 +307,7 @@ instance.prototype.init_presets = function () {
 			}]
 		});
 	}
-
+*/
 	self.setPresetDefinitions(presets);
 }
 
@@ -377,21 +342,21 @@ instance.prototype.actions = function(system) {
 		'track_selection': {
 			label: 'Track Selection',
 			options: [
-                {
-                    type: 'text',
-                    id: 'info',
-                    label: 'Information',
-                    width: 12,
-                    value: 'Note: “Track” refers to “Chapter” during DVD or BD playback. “Group” refers to “Title” during DVD or BD playback and “Folder” refers to USB and other media playback.'
-                },
+				{
+					type: 'text',
+					id: 'info',
+					label: 'Information',
+					width: 12,
+					value: 'Note: “Track” refers to “Chapter” during DVD or BD playback. “Group” refers to “Title” during DVD or BD playback and “Folder” refers to USB and other media playback.'
+				},
 				{
 					type: 'dropdown',
 					id: 'sel_cmd',
 					label: 'Option',
 					default: '2333',
 					choices: self.CHOICES_TRACK_SELECTION
-                },
-                {
+				},
+				{
 					type: 'number',
 					id: 'sel_val',
 					label: 'Track Number (1-2000)',
@@ -407,14 +372,14 @@ instance.prototype.actions = function(system) {
 		'title_selection': {
 			label: 'Group/Title Selection',
 			options: [
-                {
-                    type: 'text',
-                    id: 'info',
-                    label: 'Information',
-                    width: 12,
-                    value: 'Note: “Track” refers to “Chapter” during DVD or BD playback. “Group” refers to “Title” during DVD or BD playback and “Folder” refers to USB and other media playback.'
-                },
-                {
+				{
+					type: 'text',
+					id: 'info',
+					label: 'Information',
+					width: 12,
+					value: 'Note: “Track” refers to “Chapter” during DVD or BD playback. “Group” refers to “Title” during DVD or BD playback and “Folder” refers to USB and other media playback.'
+				},
+				{
 					type: 'dropdown',
 					id: 'sel_cmd',
 					label: 'Option',
@@ -437,13 +402,13 @@ instance.prototype.actions = function(system) {
 		'track_searching': {
 			label: 'Track Searching',
 			options: [
-                {
-                    type: 'text',
-                    id: 'info',
-                    label: 'Information',
-                    width: 12,
-                    value: 'Note: “Track” refers to “Chapter” during DVD or BD playback. “Group” refers to “Title” during DVD or BD playback and “Folder” refers to USB and other media playback.'
-                },
+				{
+					type: 'text',
+					id: 'info',
+					label: 'Information',
+					width: 12,
+					value: 'Note: “Track” refers to “Chapter” during DVD or BD playback. “Group” refers to “Title” during DVD or BD playback and “Folder” refers to USB and other media playback.'
+				},
 				{
 					type: 'dropdown',
 					id: 'sel_cmd',
@@ -456,7 +421,7 @@ instance.prototype.actions = function(system) {
 		'number_buttons': {
 			label: 'Number Buttons',
 			options: [
-                {
+				{
 					type: 'number',
 					id: 'sel_val',
 					label: 'Number (0-9)',
@@ -590,7 +555,7 @@ instance.prototype.actions = function(system) {
 		'angle': {
 			label: 'Adjust Video Angle',
 		},
-        'cursor': {
+		'cursor': {
 			label: 'Cursor',
 			options: [
 				{
@@ -605,7 +570,7 @@ instance.prototype.actions = function(system) {
 		'enter': {
 			label: 'Enter/Activate Menu',
 		},
-        'disc_tray': {
+		'disc_tray': {
 			label: 'Disc Tray',
 			options: [
 				{
@@ -617,7 +582,7 @@ instance.prototype.actions = function(system) {
 				}
 			]
 		},
-        'video_resolution': {
+		'video_resolution': {
 			label: 'Video Resolution',
 			options: [
 				{
@@ -629,10 +594,10 @@ instance.prototype.actions = function(system) {
 				}
 			]
 		},
-        'display_info': {
+		'display_info': {
 			label: 'Display Bit Rate/Media Info',
 		},
-        'functions_color': {
+		'functions_color': {
 			label: 'Functions/Color',
 			options: [
 				{
@@ -644,13 +609,13 @@ instance.prototype.actions = function(system) {
 				}
 			]
 		},
-        'pip_mode': {
+		'pip_mode': {
 			label: 'PIP Modes',
 		},
-        'home_menu': {
+		'home_menu': {
 			label: 'Home Menu',
 		},
-        'search_speed': {
+		'search_speed': {
 			label: 'Search Speed',
 			options: [
 				{
@@ -662,7 +627,7 @@ instance.prototype.actions = function(system) {
 				}
 			]
 		},
-        'dvd_auto': {
+		'dvd_auto': {
 			label: 'DVD/CD Auto Play',
 			options: [
 				{
@@ -674,7 +639,7 @@ instance.prototype.actions = function(system) {
 				}
 			]
 		},
-        'auto_resume': {
+		'auto_resume': {
 			label: 'Auto Resume',
 			options: [
 				{
@@ -697,164 +662,164 @@ instance.prototype.action = function(action) {
 
 	switch(action.action) {
 		case 'power':
-            cmd = action.options.sel_cmd;
-            a_val = "";
+			cmd = action.options.sel_cmd;
+			a_val = "";
 			break;
 
-        case 'disc_drive':
-            cmd = action.options.sel_cmd;
-            a_val = "";
-            break;
+		case 'disc_drive':
+			cmd = action.options.sel_cmd;
+			a_val = "";
+			break;
     
-        case 'track_selection':
-            if (action.options.sel_cmd == 'Tr') {
-                cmd = action.options.sel_cmd;
-                a_val = pad4(action.options.sel_val);                    
-            } 
-            else {
-                cmd = action.options.sel_cmd;
-                a_val = "";        
-            }
-            break;
+		case 'track_selection':
+			if (action.options.sel_cmd == 'Tr') {
+				cmd = action.options.sel_cmd;
+				a_val = pad4(action.options.sel_val);                    
+			} 
+			else {
+				cmd = action.options.sel_cmd;
+				a_val = "";        
+			}
+			break;
 
-        case 'title_selection':
-            if (action.options.sel_cmd == 'PCGp') {
-                cmd = action.options.sel_cmd;
-                a_val = pad4(action.options.sel_val);                    
-            } 
-            else {
-                cmd = action.options.sel_cmd;
-                a_val = "";        
-            }
-            break;
+		case 'title_selection':
+			if (action.options.sel_cmd == 'PCGp') {
+				cmd = action.options.sel_cmd;
+				a_val = pad4(action.options.sel_val);                    
+			} 
+			else {
+				cmd = action.options.sel_cmd;
+				a_val = "";        
+			}
+			break;
     
-        case 'track_searching':
-            cmd = action.options.sel_cmd;
-            a_val = "";
-            break;
+		case 'track_searching':
+			cmd = action.options.sel_cmd;
+			a_val = "";
+			break;
 
-        case 'number_buttons':
-            cmd = 'PCTKEY';
-            a_val = action.options.sel_val;
-            break;
+		case 'number_buttons':
+			cmd = 'PCTKEY';
+			a_val = action.options.sel_val;
+			break;
 
-        case 'ir_lock':
-            cmd = action.options.sel_cmd;
-            a_val = "";
-            break;
+		case 'ir_lock':
+			cmd = action.options.sel_cmd;
+			a_val = "";
+			break;
     
-        case 'panel_lock':
-            cmd = action.options.sel_cmd;
-            a_val = "";
-            break;
+		case 'panel_lock':
+			cmd = action.options.sel_cmd;
+			a_val = "";
+			break;
 
-        case 'time_display':
-            cmd = action.options.sel_cmd;
-            a_val = "";
-            break;
+		case 'time_display':
+			cmd = action.options.sel_cmd;
+			a_val = "";
+			break;
 
-        case 'repeat':
-            cmd = action.options.sel_cmd;
-            a_val = "";
-            break;
+		case 'repeat':
+			cmd = action.options.sel_cmd;
+			a_val = "";
+			break;
 
-        case 'program_mode':
-            cmd = action.options.sel_cmd;
-            a_val = "";
-            break;
+		case 'program_mode':
+			cmd = action.options.sel_cmd;
+			a_val = "";
+			break;
 
-        case 'Random_mode':
-            cmd = action.options.sel_cmd;
-            a_val = action.options.sel_val;
-            break;
+		case 'Random_mode':
+			cmd = action.options.sel_cmd;
+			a_val = action.options.sel_val;
+			break;
 
-        case 'hide_osd':
-            cmd = action.options.sel_cmd;
-            a_val = "";
-            break;
+		case 'hide_osd':
+			cmd = action.options.sel_cmd;
+			a_val = "";
+			break;
 
-        case 'dvd_menu':
-            cmd = action.options.sel_cmd;
-            a_val = "";
-            break;
+		case 'dvd_menu':
+			cmd = action.options.sel_cmd;
+			a_val = "";
+			break;
     
-        case 'audio_dialog':
-            cmd = action.options.sel_cmd;
-            a_val = "";
-            break;
+		case 'audio_dialog':
+			cmd = action.options.sel_cmd;
+			a_val = "";
+			break;
 
-        case 'subtitles':
-            cmd = 'DVSBTL1';
-            a_val = "";
-            break;
+		case 'subtitles':
+			cmd = 'DVSBTL1';
+			a_val = "";
+			break;
 
-        case 'angle':
-            cmd = 'DVANGL+';
-            a_val = "";
-            break;
+		case 'angle':
+			cmd = 'DVANGL+';
+			a_val = "";
+			break;
 
-        case 'cursor':
-            cmd = action.options.sel_cmd;
-            a_val = "";
-            break;
+		case 'cursor':
+			cmd = action.options.sel_cmd;
+			a_val = "";
+			break;
 
-        case 'enter':
-            cmd = 'PCENTR';
-            a_val = "";
-            break;
+		case 'enter':
+			cmd = 'PCENTR';
+			a_val = "";
+			break;
         
-        case 'video_resolution':
-            cmd = action.options.sel_cmd;
-            a_val = "";
-            break;
+		case 'video_resolution':
+			cmd = action.options.sel_cmd;
+			a_val = "";
+			break;
 
-        case 'display_info':
-            cmd = 'DVDSIF';
-            a_val = "";
-            break;
+		case 'display_info':
+			cmd = 'DVDSIF';
+			a_val = "";
+			break;
         
-        case 'functions_color':
-            cmd = action.options.sel_cmd;
-            a_val = "";
-            break;
+		case 'functions_color':
+			cmd = action.options.sel_cmd;
+			a_val = "";
+			break;
     
-        case 'pip_mode':
-            cmd = 'DVMO';
-            a_val = "";
-            break;
+		case 'pip_mode':
+			cmd = 'DVMO';
+			a_val = "";
+			break;
 
-        case 'home_menu':
-            cmd = 'PCHM';
-            a_val = "";
-            break;
+		case 'home_menu':
+			cmd = 'PCHM';
+			a_val = "";
+			break;
 
-        case 'search_speed':
-            cmd = action.options.sel_cmd;
-            a_val = "";
-            break;
+		case 'search_speed':
+			cmd = action.options.sel_cmd;
+			a_val = "";
+			break;
 
-        case 'dvd_auto':
-            cmd = action.options.sel_cmd;
-            a_val = "";
-            break;
+		case 'dvd_auto':
+			cmd = action.options.sel_cmd;
+			a_val = "";
+			break;
 
-        case 'auto_resume':
-            cmd = action.options.sel_cmd;
-            a_val = "";
-            break;
-    }
+		case 'auto_resume':
+			cmd = action.options.sel_cmd;
+			a_val = "";
+			break;
+	}
 
-    if (cmd !== undefined) {
-        console.log('Send: @' + cmd + a_val)
+	if (cmd !== undefined) {
+		console.log('Send: @0' + cmd + a_val)
+		debug('sending ',"@0" + cmd + a_val,"to",self.config.host);
 
-        debug('sending ',"@0" + cmd + a_val,"to",self.config.host);
-        if (self.socket !== undefined && self.socket.connected) {
-            self.socket.send("@0" + cmd+ a_val + "\r");
-        }
-        else {
-            debug('Socket not connected :(');
-        }
-    }
+		if (self.socket !== undefined && self.socket.connected) {
+			self.socket.send("@0" + cmd+ a_val + "\r");
+		}
+		else {
+			debug('Socket not connected :(');
+		}
+	}
 }
 
 instance_skel.extendedBy(instance);

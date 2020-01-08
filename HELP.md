@@ -2,7 +2,7 @@
 
 This module will connect to a Denon DN-500BD MKII.
 
-**Available commands for DN-500BD MKII**
+**Available commands for Denon DN-500BD MKII**
 * Power 
 * Disc Drive 
 * Track Playback 

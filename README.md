@@ -6,3 +6,6 @@ Provides essential control over TCP, for more info look in HELP.md
 * Added all commands except the two listed in HELP.MD
 * Missing presets
 * Missinf feedback
+
+**V0.0.2**
+* Indent fixes / Cleanup before adding presets
