@@ -120,8 +120,8 @@ instance.prototype.CHOICES_POWER = [
 ];
 
 instance.prototype.CHOICES_DISC_DRIVE = [
-	{ id: 'PCDTRYOP', 	label: 'Eject' },
-	{ id: 'PCDTRYCL', 	label: 'Close' }
+	{ id: 'PCDTRYOP', 	label: 'Eject Disk' },
+	{ id: 'PCDTRYCL', 	label: 'Close Disk' }
 ];
 
 instance.prototype.CHOICES_TRACK_PLAYBACK = [
@@ -249,65 +249,560 @@ instance.prototype.init_presets = function () {
 	var self = this;
 	var presets = [];
 	var pstSize = '18';
-/*
-	for (var input in self.CHOICES_COMMANDS) {
-		presets.push({
-			category: 'Commands',
-			label: self.CHOICES_COMMANDS[input].label,
-			bank: {
-				style: 'text',
-				text: self.CHOICES_COMMANDS[input].label,
-				size: pstSize,
-				color: '16777215',
-				bgcolor: 0
-			},
-			actions: [{
-				action: self.CHOICES_COMMANDS[input].id,
-				options: {
-					id: self.CHOICES_COMMANDS[input].value,
-				}
-			}]
-		});
-	}
 
-	for (var input in self.CHOICES_SEEK_TO) {
-		presets.push({
-			category: 'Commands',
-			label: self.CHOICES_SEEK_TO[input].label,
-			bank: {
-				style: 'text',
-				text: self.CHOICES_SEEK_TO[input].label,
-				size: pstSize,
-				color: '16777215',
-				bgcolor: 0
-			},
-			actions: [{
-				action: self.CHOICES_SEEK_TO[input].id,
-				options: {
-					id: self.CHOICES_SEEK_TO[input].value,
-					seek_time: self.CHOICES_SEEK_TO[input].time
-				}
-			}]
-		});
-	}
-
-	for (var input in self.CHOICES_SYSTEM) {
+	for (var input in self.CHOICES_POWER) {
 		presets.push({
 			category: 'System',
-			label: self.CHOICES_SYSTEM[input].label,
+			label: self.CHOICES_POWER[input].label,
 			bank: {
 				style: 'text',
-				text: self.CHOICES_SYSTEM[input].label,
+				text: self.CHOICES_POWER[input].label,
+				size: pstSize,
+				color: '16777215',
+				bgcolor: 0
+			},
+			actions: [{
+				action: 'power',
+				options:{
+					sel_cmd: self.CHOICES_POWER[input].id,
+				}
+			}]
+		});
+	}
+
+	for (var input in self.CHOICES_DISC_DRIVE) {
+		presets.push({
+			category: 'System',
+			label: self.CHOICES_DISC_DRIVE[input].label,
+			bank: {
+				style: 'text',
+				text: self.CHOICES_DISC_DRIVE[input].label,
+				size: pstSize,
+				color: '16777215',
+				bgcolor: 0
+			},
+			actions: [{
+				action: 'disc_drive',
+				options: {
+					sel_cmd: self.CHOICES_DISC_DRIVE[input].id,
+				}
+			}]
+		});
+	}
+
+	for (var input in self.CHOICES_TRACK_PLAYBACK) {
+		presets.push({
+			category: 'Track/Title',
+			label: self.CHOICES_TRACK_PLAYBACK[input].label,
+			bank: {
+				style: 'text',
+				text: self.CHOICES_TRACK_PLAYBACK[input].label,
 				size: pstSize,
 				color: '16777215',
 				bgcolor: self.rgb(0,0,0)
 			},
 			actions: [{
-				action: self.CHOICES_SYSTEM[input].id,
+				action: 'track_playback',
+				options: {
+					sel_cmd: self.CHOICES_TRACK_PLAYBACK[input].id,
+				}
 			}]
 		});
 	}
-*/
+
+	for (var input in self.CHOICES_TRACK_SELECTION) {
+		presets.push({
+			category: 'Track/Title',
+			label: self.CHOICES_TRACK_SELECTION[input].label,
+			bank: {
+				style: 'text',
+				text: self.CHOICES_TRACK_SELECTION[input].label,
+				size: pstSize,
+				color: '16777215',
+				bgcolor: self.rgb(0,0,0)
+			},
+			actions: [{
+				action: 'track_selection',
+				options: {
+					sel_cmd: self.CHOICES_TRACK_SELECTION[input].id,
+				}
+			}]
+		});
+	}
+
+	for (var input in self.CHOICES_TITLE_SELECTION) {
+		presets.push({
+			category: 'Track/Title',
+			label: self.CHOICES_TITLE_SELECTION[input].label,
+			bank: {
+				style: 'text',
+				text: self.CHOICES_TITLE_SELECTION[input].label,
+				size: pstSize,
+				color: '16777215',
+				bgcolor: self.rgb(0,0,0)
+			},
+			actions: [{
+				action: 'title_selection',
+				options: {
+					sel_cmd: self.CHOICES_TITLE_SELECTION[input].id,
+				}
+			}]
+		});
+	}
+
+	for (var input in self.CHOICES_TRACK_SEARCHING) {
+		presets.push({
+			category: 'Track/Title',
+			label: self.CHOICES_TRACK_SEARCHING[input].label,
+			bank: {
+				style: 'text',
+				text: self.CHOICES_TRACK_SEARCHING[input].label,
+				size: pstSize,
+				color: '16777215',
+				bgcolor: self.rgb(0,0,0)
+			},
+			actions: [{
+				action: 'track_searching',
+				options: {
+					sel_cmd: self.CHOICES_TRACK_SEARCHING[input].id,
+				}
+			}]
+		});
+	}
+
+	for (var x = 0; x < 10; x++){
+		presets.push({
+			category: 'Buttons',
+			label: 'Number ' + x,
+			bank: {
+				style: 'text',
+				text: '' + x,
+				size: '44',
+				color: '16777215',
+				bgcolor: self.rgb(0,0,0)
+			},
+			actions: [{
+				action: 'number_buttons',
+				options: {
+					sel_val: x,
+				}
+			}]
+		});
+	}
+
+	for (var input in self.CHOICES_IR_LOCK) {
+		presets.push({
+			category: 'System',
+			label: self.CHOICES_IR_LOCK[input].label,
+			bank: {
+				style: 'text',
+				text: self.CHOICES_IR_LOCK[input].label,
+				size: pstSize,
+				color: '16777215',
+				bgcolor: self.rgb(0,0,0)
+			},
+			actions: [{
+				action: 'ir_lock',
+				options: {
+					sel_cmd: self.CHOICES_IR_LOCK[input].id,
+				}
+			}]
+		});
+	}
+
+	for (var input in self.CHOICES_PANEL_LOCK) {
+		presets.push({
+			category: 'System',
+			label: self.CHOICES_PANEL_LOCK[input].label,
+			bank: {
+				style: 'text',
+				text: self.CHOICES_PANEL_LOCK[input].label,
+				size: pstSize,
+				color: '16777215',
+				bgcolor: self.rgb(0,0,0)
+			},
+			actions: [{
+				action: 'panel_lock',
+				options: {
+					sel_cmd: self.CHOICES_PANEL_LOCK[input].id,
+				}
+			}]
+		});
+	}
+
+	for (var input in self.CHOICES_TIME_DISPLAY) {
+		presets.push({
+			category: 'System',
+			label: self.CHOICES_TIME_DISPLAY[input].label,
+			bank: {
+				style: 'text',
+				text: self.CHOICES_TIME_DISPLAY[input].label,
+				size: pstSize,
+				color: '16777215',
+				bgcolor: self.rgb(0,0,0)
+			},
+			actions: [{
+				action: 'time_display',
+				options: {
+					sel_cmd: self.CHOICES_TIME_DISPLAY[input].id,
+				}
+			}]
+		});
+	}
+
+	for (var input in self.CHOICES_REPEAT) {
+		presets.push({
+			category: 'Repeat',
+			label: self.CHOICES_REPEAT[input].label,
+			bank: {
+				style: 'text',
+				text: self.CHOICES_REPEAT[input].label,
+				size: pstSize,
+				color: '16777215',
+				bgcolor: self.rgb(0,0,0)
+			},
+			actions: [{
+				action: 'repeat',
+				options: {
+					sel_cmd: self.CHOICES_REPEAT[input].id,
+				}
+			}]
+		});
+	}
+
+	for (var input in self.CHOICES_PROGRAM_MODE) {
+		presets.push({
+			category: 'Program Mode',
+			label: self.CHOICES_PROGRAM_MODE[input].label,
+			bank: {
+				style: 'text',
+				text: self.CHOICES_PROGRAM_MODE[input].label,
+				size: pstSize,
+				color: '16777215',
+				bgcolor: self.rgb(0,0,0)
+			},
+			actions: [{
+				action: 'program_mode',
+				options: {
+					sel_cmd: self.CHOICES_PROGRAM_MODE[input].id,
+				}
+			}]
+		});
+	}
+
+	for (var input1 in self.CHOICES_RANDOM_MODE_TYPE) {
+		for (var input2 in self.CHOICES_RANDOM_MODE_MODE) {
+			presets.push({
+				category: 'Program Mode',
+				label: self.CHOICES_RANDOM_MODE_TYPE[input1].label,
+				bank: {
+					style: 'text',
+					text: self.CHOICES_RANDOM_MODE_TYPE[input1].label + self.CHOICES_RANDOM_MODE_MODE[input2].label,
+					size: pstSize,
+					color: '16777215',
+					bgcolor: self.rgb(0,0,0)
+				},
+				actions: [{
+					action: 'Random_mode',
+					options: {
+						sel_cmd: self.CHOICES_RANDOM_MODE_TYPE[input1].id,
+						sel_val: self.CHOICES_RANDOM_MODE_MODE[input2].id,
+					}
+				}]
+			});
+		}
+	}
+
+	for (var input in self.CHOICES_HIDE_OSD) {
+		presets.push({
+			category: 'OSD',
+			label: self.CHOICES_HIDE_OSD[input].label,
+			bank: {
+				style: 'text',
+				text: self.CHOICES_HIDE_OSD[input].label,
+				size: pstSize,
+				color: '16777215',
+				bgcolor: self.rgb(0,0,0)
+			},
+			actions: [{
+				action: 'hide_osd',
+				options: {
+					sel_cmd: self.CHOICES_HIDE_OSD[input].id,
+				}
+			}]
+		});
+	}
+	 
+	for (var input in self.CHOICES_DVD_MENU) {
+		presets.push({
+			category: 'DVD Menu',
+			label: self.CHOICES_DVD_MENU[input].label,
+			bank: {
+				style: 'text',
+				text: self.CHOICES_DVD_MENU[input].label,
+				size: pstSize,
+				color: '16777215',
+				bgcolor: self.rgb(0,0,0)
+			},
+			actions: [{
+				action: 'dvd_menu',
+				options: {
+					sel_cmd: self.CHOICES_DVD_MENU[input].id,
+				}
+			}]
+		});
+	}
+
+	for (var input in self.CHOICES_AUDIO_DIALOG) {
+		presets.push({
+			category: 'Audio Dialog',
+			label: self.CHOICES_AUDIO_DIALOG[input].label,
+			bank: {
+				style: 'text',
+				text: self.CHOICES_AUDIO_DIALOG[input].label,
+				size: pstSize,
+				color: '16777215',
+				bgcolor: self.rgb(0,0,0)
+			},
+			actions: [{
+				action: 'audio_dialog',
+				options: {
+					sel_cmd: self.CHOICES_AUDIO_DIALOG[input].id,
+				}
+			}]
+		});
+	}
+
+	presets.push({
+		category: 'Buttons',
+		label: 'Subtitles Toggle',
+		bank: {
+			style: 'text',
+			text: 'Subtitles Toggle',
+			size: pstSize,
+			color: '16777215',
+			bgcolor: self.rgb(0,0,0)
+		},
+		actions: [{
+			action: 'subtitles',
+		}]
+	});
+
+	presets.push({
+		category: 'Buttons',
+		label: 'Adjust Video Angle',
+		bank: {
+			style: 'text',
+			text: 'Video Angle',
+			size: pstSize,
+			color: '16777215',
+			bgcolor: self.rgb(0,0,0)
+		},
+		actions: [{
+			action: 'angle',
+		}]
+	});
+
+	for (var input in self.CHOICES_CURSOR) {
+		presets.push({
+			category: 'Cursor',
+			label: self.CHOICES_CURSOR[input].label,
+			bank: {
+				style: 'text',
+				text: self.CHOICES_CURSOR[input].label,
+				size: pstSize,
+				color: '16777215',
+				bgcolor: self.rgb(0,0,0)
+			},
+			actions: [{
+				action: 'cursor',
+				options: {
+					sel_cmd: self.CHOICES_CURSOR[input].id,
+				}
+			}]
+		});
+	}
+
+	presets.push({
+		category: 'Buttons',
+		label: 'Enter/Activate Menu',
+		bank: {
+			style: 'text',
+			text: 'Enter',
+			size: pstSize,
+			color: '16777215',
+			bgcolor: self.rgb(0,0,0)
+		},
+		actions: [{
+			action: 'enter',
+		}]
+	});
+
+	for (var input in self.CHOICES_DISC_TRAY) {
+		presets.push({
+			category: 'System',
+			label: self.CHOICES_DISC_TRAY[input].label,
+			bank: {
+				style: 'text',
+				text: self.CHOICES_DISC_TRAY[input].label,
+				size: pstSize,
+				color: '16777215',
+				bgcolor: 0
+			},
+			actions: [{
+				action: 'disc_tray',
+				options: {
+					sel_cmd: self.CHOICES_DISC_TRAY[input].id,
+				}
+			}]
+		});
+	}
+
+	for (var input in self.CHOICES_VIDEO_RESOLUTION) {
+		presets.push({
+			category: 'Video Resolution',
+			label: self.CHOICES_VIDEO_RESOLUTION[input].label,
+			bank: {
+				style: 'text',
+				text: self.CHOICES_VIDEO_RESOLUTION[input].label,
+				size: pstSize,
+				color: '16777215',
+				bgcolor: 0
+			},
+			actions: [{
+				action: 'video_resolution',
+				options: {
+					sel_cmd: self.CHOICES_VIDEO_RESOLUTION[input].id,
+				}
+			}]
+		});
+	}
+
+	presets.push({
+		category: 'Buttons',
+		label: 'Display Bit Rate/Media Info',
+		bank: {
+			style: 'text',
+			text: 'Info',
+			size: pstSize,
+			color: '16777215',
+			bgcolor: self.rgb(0,0,0)
+		},
+		actions: [{
+			action: 'display_info',
+		}]
+	});
+
+	for (var input in self.CHOICES_FUNCTIONS_COLOR) {
+		presets.push({
+			category: 'Functions/Color',
+			label: self.CHOICES_FUNCTIONS_COLOR[input].label,
+			bank: {
+				style: 'text',
+				text: self.CHOICES_FUNCTIONS_COLOR[input].label,
+				size: pstSize,
+				color: '16777215',
+				bgcolor: 0
+			},
+			actions: [{
+				action: 'functions_color',
+				options: {
+					sel_cmd: self.CHOICES_FUNCTIONS_COLOR[input].id,
+				}
+			}]
+		});
+	}
+
+	presets.push({
+		category: 'Buttons',
+		label: 'PIP Modes',
+		bank: {
+			style: 'text',
+			text: 'PIP Modes',
+			size: pstSize,
+			color: '16777215',
+			bgcolor: self.rgb(0,0,0)
+		},
+		actions: [{
+			action: 'pip_mode',
+		}]
+	});
+
+	presets.push({
+		category: 'Buttons',
+		label: 'Home Menu',
+		bank: {
+			style: 'text',
+			text: 'Home Menu',
+			size: pstSize,
+			color: '16777215',
+			bgcolor: self.rgb(0,0,0)
+		},
+		actions: [{
+			action: 'home_menu',
+		}]
+	});
+
+	for (var input in self.CHOICES_SEARCH_SPEED) {
+		presets.push({
+			category: 'Search Speed',
+			label: self.CHOICES_SEARCH_SPEED[input].label,
+			bank: {
+				style: 'text',
+				text: self.CHOICES_SEARCH_SPEED[input].label,
+				size: pstSize,
+				color: '16777215',
+				bgcolor: 0
+			},
+			actions: [{
+				action: 'search_speed',
+				options: {
+					sel_cmd: self.CHOICES_SEARCH_SPEED[input].id,
+				}
+			}]
+		});
+	}
+
+	for (var input in self.CHOICES_DVD_AUTO) {
+		presets.push({
+			category: 'DVD/CD Auto Play',
+			label: self.CHOICES_DVD_AUTO[input].label,
+			bank: {
+				style: 'text',
+				text: self.CHOICES_DVD_AUTO[input].label,
+				size: pstSize,
+				color: '16777215',
+				bgcolor: 0
+			},
+			actions: [{
+				action: 'dvd_auto',
+				options: {
+					sel_cmd: self.CHOICES_DVD_AUTO[input].id,
+				}
+			}]
+		});
+	}
+
+	for (var input in self.CHOICES_AUTO_RESUME) {
+		presets.push({
+			category: 'Auto Resume',
+			label: self.CHOICES_AUTO_RESUME[input].label,
+			bank: {
+				style: 'text',
+				text: self.CHOICES_AUTO_RESUME[input].label,
+				size: pstSize,
+				color: '16777215',
+				bgcolor: 0
+			},
+			actions: [{
+				action: 'auto_resume',
+				options: {
+					sel_cmd: self.CHOICES_AUTO_RESUME[input].id,
+				}
+			}]
+		});
+	}
+
 	self.setPresetDefinitions(presets);
 }
 
@@ -337,6 +832,25 @@ instance.prototype.actions = function(system) {
 					default: 'PCDTRYOP',
 					choices: self.CHOICES_DISC_DRIVE
 				}
+			]
+		},
+		'track_playback': {
+			label: 'Track Playback',
+			options: [
+				{
+					type: 'text',
+					id: 'info',
+					label: 'Information',
+					width: 12,
+					value: 'Note: “Track” refers to “Chapter” during DVD or BD playback. “Group” refers to “Title” during DVD or BD playback and “Folder” refers to USB and other media playback.'
+				},
+				{
+					type: 'dropdown',
+					id: 'sel_cmd',
+					label: 'Option',
+					default: '2333',
+					choices: self.CHOICES_TRACK_PLAYBACK
+				},
 			]
 		},
 		'track_selection': {
@@ -670,7 +1184,12 @@ instance.prototype.action = function(action) {
 			cmd = action.options.sel_cmd;
 			a_val = "";
 			break;
-    
+		
+		case 'track_playback':
+			cmd = action.options.sel_cmd;
+			a_val = "";
+			break;
+		
 		case 'track_selection':
 			if (action.options.sel_cmd == 'Tr') {
 				cmd = action.options.sel_cmd;

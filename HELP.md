@@ -32,10 +32,12 @@ This module will connect to a Denon DN-500BD MKII.
 * DVD/CD Auto Play 
 * Auto Resume
 
+**Presets Included:**
+* Presets for all current commands
+
 **Not implemented yet:**
 * BD/DVD Ratings
 * Menu Settings (whole category)
 
 **Missing parts:**
-* Presets for all commands
 * Feedback of some kind
