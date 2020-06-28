@@ -125,7 +125,7 @@ instance.prototype.CHOICES_DISC_DRIVE = [
 ];
 
 instance.prototype.CHOICES_TRACK_PLAYBACK = [
-	{ id: '2353', 	    label: 'PLay' },
+	{ id: '2353', 	    label: 'Play' },
 	{ id: '2348', 	    label: 'Pause' },
 	{ id: '2354', 	    label: 'Stop' },
 	{ id: 'mt00', 	    label: 'Turn Myte On' },
@@ -848,7 +848,7 @@ instance.prototype.actions = function(system) {
 					type: 'dropdown',
 					id: 'sel_cmd',
 					label: 'Option',
-					default: '2333',
+					default: '2353',
 					choices: self.CHOICES_TRACK_PLAYBACK
 				},
 			]

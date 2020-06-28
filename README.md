@@ -12,3 +12,6 @@ Provides essential control over TCP, for more info look in HELP.md
 
 **V1.0.0**
 * Added Presets for all commands
+
+**V1.0.1**
+* Fixed some spelling errors
