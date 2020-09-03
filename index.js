@@ -25,17 +25,21 @@ function instance(system, id, config) {
 	return self;
 }
 
-instance.prototype.updateConfig = function(config) {
+instance.prototype.updateConfig = function (config) {
 	var self = this;
-	self.init_presets();
+	var resetConnection = false;
 
-	if (self.socket !== undefined) {
-		self.socket.destroy();
-		delete self.socket;
+	if (self.config.host != config.host || self.config.port != config.port) {
+		resetConnection = true;
 	}
 
 	self.config = config;
-  self.init_tcp();
+
+	self.init_presets();
+
+	if (resetConnection === true || self.socket === undefined) {
+		self.init_tcp();
+	}
 };
 
 instance.prototype.init = function() {
@@ -57,7 +61,7 @@ instance.prototype.init_tcp = function() {
 
 	self.status(self.STATE_WARNING, 'Connecting');
 
-	if (self.config.host) {
+	if (self.config.host && self.config.port) {
 		self.socket = new tcp(self.config.host, self.config.port);
 
 		self.socket.on('status_change', function (status, message) {
